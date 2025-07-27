@@ -1,0 +1,30 @@
+# Exported from Render on 2025-07-27T08:46:35Z
+services:
+- type: web
+  name: Project-File-Uploader
+  runtime: node
+  repo: https://github.com/ritzo37/Project-File-Uploader
+  plan: free
+  envVars:
+  - key: SUPABASE_URL
+    sync: false
+  - key: SUPABASE_KEY
+    sync: false
+  - key: PGPORT
+    sync: false
+  - key: PGHOST
+    sync: false
+  - key: PGDB
+    sync: false
+  - key: PGPASSWORD
+    sync: false
+  - key: PGUSER
+    sync: false
+  - key: DATABASE_URL
+    sync: false
+  region: singapore
+  buildCommand: npm install --production=false
+  startCommand: node app.js
+  autoDeployTrigger: commit
+  preDeployCommand: npx prisma migrate deploy
+version: "1"
